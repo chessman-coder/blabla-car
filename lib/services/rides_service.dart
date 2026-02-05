@@ -8,16 +8,20 @@ import '../model/ride/ride.dart';
 ///   - The list of available rides
 ///
 class RidesService {
-  static List<Ride> allRides = fakeRides;
+  static List<Ride> availableRides = fakeRides;
 
   // TODO Create a static method to filter rides by departure location
   static List<Ride> filterByDeparture(Location departure) {
-    return [];
+    return availableRides
+        .where((ride) => ride.departureLocation == departure)
+        .toList();
   }
 
   // TODO Create a static method to filter rides by number of requested seat
-  static List<Ride> filterBySeatRequested(Location departure) {
-    return [];
+  static List<Ride> filterBySeatRequested(int seatRequest) {
+    return availableRides
+        .where((ride) => ride.remainingSeats >= seatRequest)
+        .toList();
   }
 
   // TODO Create a static method to filter : optional departure location, optional requested seat
