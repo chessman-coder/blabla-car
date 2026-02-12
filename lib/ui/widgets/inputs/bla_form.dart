@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
 class BlaForm extends StatelessWidget {
-  const BlaForm({super.key});
+  final String departureLocation;
+  final String arrivalLocation;
+  final String dateTime;
+  final int user;
+  const BlaForm({
+    super.key,
+    required this.departureLocation,
+    required this.arrivalLocation,
+    required this.dateTime,
+    required this.user,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +25,13 @@ class BlaForm extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildRow(Icons.radio_button_unchecked, "Toulouse", Icons.swap_vert),
+          _buildRow(Icons.radio_button_unchecked, departureLocation, Icons.swap_vert),
           const Divider(),
-          _buildRow(Icons.radio_button_unchecked, "Bordeaux, France", null),
+          _buildRow(Icons.radio_button_unchecked, arrivalLocation, null),
           const Divider(),
-          _buildRow(Icons.calendar_today, "Sat 22 Feb", null),
+          _buildRow(Icons.calendar_today, dateTime, null),
           const Divider(),
-          _buildRow(Icons.person_outline, "1", null),
+          _buildRow(Icons.person_outline, user.toString(), null),
 
           const SizedBox(height: 20),
 
