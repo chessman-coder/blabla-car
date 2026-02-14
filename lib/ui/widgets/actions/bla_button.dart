@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
 
 class BlaButton extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
   final String text;
   final Color textColor;
-  final Color backgroundColor;
-  // final VoidCallback onPressed;
+  final Color? backgroundColor;
 
   const BlaButton({
     super.key,
-    required this.icon,
+    this.icon,
     required this.text,
-    required this.textColor,
-    required this.backgroundColor,
-    // required this.onPressed,
+    this.textColor = Colors.white,
+    this.backgroundColor = const Color(0xFF00aff5),
   });
 
-@override
+  @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        )
       ),
       onPressed: () {},
       icon: Icon(icon, color: textColor),
-      label: Text(text, style: TextStyle(color: textColor)),
+      label: Text(
+        text,
+        style: TextStyle(
+          color: textColor,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 }
